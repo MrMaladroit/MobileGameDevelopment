@@ -5,6 +5,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void FixedUpdate()
     {
         if (Input.GetAxis("Horizontal") != 0)
@@ -22,11 +29,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal") < 0)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
+            rb.velocity = new Vector2(-speed, 0);
         }
         else if (Input.GetAxis("Horizontal") > 0)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+            rb.velocity = new Vector2(speed, 0);
         }
         else
         {
@@ -42,16 +49,16 @@ public class Player : MonoBehaviour
 
             if (relativeMousePosition.x < 0.5f)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, 0);
+                rb.velocity = new Vector2(-speed, 0);
             }
             else
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+                rb.velocity = new Vector2(speed, 0);
             }
         }
         else
         {
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
     }
 }
